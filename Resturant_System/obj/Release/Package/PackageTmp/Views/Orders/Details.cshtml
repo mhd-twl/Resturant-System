@@ -1,0 +1,63 @@
+﻿@model Resturant_System.Models.Order
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Order</legend>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Active)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Active)
+    </div>
+
+    <div class="display-label">
+        <div id="Meal_Id">
+            @foreach (var items in ViewBag.Meal_Ids as List<Resturant_System.Models.Select_Item>)
+            {
+                if (items.id == @Model.Meal_Id)
+                {
+                    <div id="@items.value">@items.value</div>
+                }
+            }
+        </div>
+
+        @*@Html.DisplayNameFor(model => model.Meal_Id)
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.Meal_Id)*@
+    </div>
+
+    <div class="display-label">
+        <div id="Invoice_Id">
+            @foreach (var items in ViewBag.Invoice_Ids as List<Resturant_System.Models.Select_Item>)
+            {
+                if (items.id == @Model.Invoice_Id)
+                {
+                    <div id="@items.id">@items.value</div>
+                }
+            }
+        </div>
+
+        @*@Html.DisplayNameFor(model => model.Invoice_Id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Invoice_Id)*@
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Extra)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Extra)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

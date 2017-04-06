@@ -1,0 +1,36 @@
+﻿@model Resturant_System.Models.Table
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Table</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Unit_Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Unit_Name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Number_of_Chairs)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Number_of_Chairs)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Extra)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Extra)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

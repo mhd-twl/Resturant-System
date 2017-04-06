@@ -1,0 +1,234 @@
+﻿@model List<Resturant_System.Models.MealsView>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="" style="position:fixed;right:0px;bottom:0px;">
+
+    <div id="cart">
+        <div title="add meals" class="ui-widget-content "
+             style="cursor: pointer; width: 300px; height: 300px; background: url(&quot;/images/main/plate.png&quot;) no-repeat scroll 0% 0% / 120% 120% transparent ! important;">
+            <ol style="position: absolute; text-align: center; margin: 0px; padding: 0px; top: 50% !important; left: 50% !important;">
+                <li class="placeholder">Add your items here</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<style>
+
+</style>
+
+<div class="viewMealBody">
+    <div class="wrap" style="border: 0px !important;">
+        <button class="button"> Open a New Order </button>
+        <button class="button"> Cancel The Order </button>
+    </div>
+    <div class="clear"></div>
+    <div class="wrap" id="warpdiv">
+        <div id="products">
+            <h1 class="alert alert-warning"> Our Menu </h1>
+            <div id="catalog">
+                @foreach (var item in Model)
+                {
+                    <h2><a href="#"><b>@item.Meals_Category.Name</b></a></h2>
+                    <div>
+                        <ul>
+                            @foreach (var meals in item.Meals_List)
+                            {
+                                <li>
+                                    <div class="listview_1_of_2 images_1_of_2 ui-widget-content myWidget">
+                                        <table>
+                                            <tr>
+                                                <td>
+                                                    <div class="listimg listimg_2_of_1" style="width: auto !important;" draggable="false">
+                                                        <a href="#"><img src="@meals.Image" class="imgMeal" alt=""><span class="prcMeal">$@meals.Price</span></a>
+                                                    </div>
+                                                </td>
+                                                <td>&nbsp;</td>
+                                                <td>
+                                                    <div class="text list_2_of_1" style="width: auto !important;">
+                                                        <h3 class="ttlMeal">@meals.Name  <input type="hidden" class="prc" value="@meals.Price" /></h3>
+                                                        <p>@meals.Recipe.</p>
+                                                        <div class="read_more"><a href="/Meal/Details/@meals.Id">Read More</a></div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+@*//----------------------------------------------------------------------------*@
+
+
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+<style>
+    .plante {
+        cursor: pointer;
+        width: 300px;
+        height: 300px;
+        background: url('/images/main/plate.png') no-repeat scroll 0% 0% / 120% 120% transparent;
+        text-align: "left";
+    }
+
+    #feedback {
+        font-size: 1.4em;
+    }
+
+    .ui-widget-content {
+        border: 0;
+    }
+
+    #selectable .ui-selecting {
+        background: #FECA40;
+    }
+
+    #selectable .ui-selected {
+        background: #F39814;
+        color: white;
+    }
+
+    #selectable {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        width: 60%;
+    }
+
+        #selectable li {
+            margin: 3px;
+            padding: 0.4em;
+            font-size: 1.4em;
+            height: 18px;
+        }
+
+    .myWidget:hover {
+        background-color: #ffe6b3;
+        cursor: pointer;
+    }
+
+    .myWidget .ui-selected {
+        background: #F39814;
+        color: white;
+    }
+
+    .viewMealBody {
+        position: relative;
+        padding-bottom: 20%;
+    }
+
+    .listimg {
+        -moz-user-select: none;
+        -webkit-user-drag: none;
+    }
+
+    .imgga {
+        height: 100px !important;
+        width: 100px !important;
+    }
+
+    img {
+        pointer-events: none;
+    }
+
+    .unselectable {
+        /* For Opera and <= IE9, we need to add unselectable="on" attribute onto each element */
+        /* Check this site for more details: http://help.dottoro.com/lhwdpnva.php */
+        -moz-user-select: none; /* These user-select properties are inheritable, used to prevent text selection */
+        -webkit-user-select: none;
+        -ms-user-select: none; /* From IE10 only */
+        user-select: none; /* Not valid CSS yet, as of July 2012 */
+        -webkit-user-drag: none; /* Prevents dragging of images/divs etc */
+        user-drag: none;
+    }
+
+    h1 {
+        padding: .2em;
+        margin: 0;
+    }
+
+    #products {
+        float: left;
+        width: 75%;
+        height: 90%;
+        margin-right: 2em;
+    }
+
+    .ui-widget-content {
+        background: rgba(254, 254, 254, 0.11) !important;
+        border: 0 !important;
+    }
+
+    #cart; {
+        /*width: 00px;
+        //float: eft;
+        //margin-top: em;*/
+    }
+</style>
+@section scripts {
+    <script type="text/javascript">
+
+        $(function () {
+            $("#catalog").accordion();
+            console.log("hello");
+            $("#catalog li h3").draggable({
+                appendTo: "body",
+                helper: "clone",
+                cursor: "move", cursorAt: { top: 4, left: 5 }, cancel: "p.ui-widget-header"
+            });
+            $("#cart ol").droppable({
+                activeClass: "ui-state-default",
+                hoverClass: "ui-state-hover",
+                accept: ":not(.ui-sortable-helper)",
+                drop: function (event, ui) {
+                    $(this).find(".placeholder").remove();
+                    var tmp = $("<li></li>");
+                    $("<h3></h3>").text(ui.draggable.text()).appendTo(tmp);
+                    console.log($(tmp));
+                    tmp.appendTo(this);
+                    //console.log($(tmp));
+                    //console.log($(this).val());
+                    // new for price
+                    //     var pric = $("h3").text(ui.draggable.text());
+                    //console.log(pric);
+                    //     add_to_invoice();
+                    //check_invoice_value();
+                }
+            }).sortable({
+                items: "li:not(.placeholder)",
+                sort: function () {
+                    $(this).removeClass("ui-state-default");
+                }
+            });
+        });
+        //================
+
+        var add_to_invoice = function () { }
+        var check_invoice_value = function () {
+            $("#cart ol")
+        }
+        //var makeUnselectable = function ($target) {
+        //    $target
+        //        .addClass('unselectable') // All these attributes are inheritable
+        //        .attr('unselectable', 'on') // For IE9 - This property is not inherited, needs to be placed onto everything
+        //        .attr('draggable', 'false') // For moz and webkit, although Firefox 16 ignores this when -moz-user-select: none; is set, it's like these properties are mutually exclusive, seems to be a bug.
+        //        .on('dragstart', function () { return false; });  // Needed since Firefox 16 seems to ingore the 'draggable' attribute we just applied above when '-moz-user-select: none' is applied to the CSS
+
+        //    $target // Apply non-inheritable properties to the child elements
+        //        .find('*')
+        //        .attr('draggable', 'false')
+        //        .attr('unselectable', 'on');
+        //};
+        ////=================
+        //makeUnselectable("img");
+    </script>
+}

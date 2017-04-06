@@ -1,0 +1,39 @@
+﻿
+<div class="backg">
+    <div class="panel loginPnl panel-warning">
+        <div class="well panel-heading"> Welcome, Please Login... </div>
+        <div class="well panel-body well-lg">
+            <p>
+                <label class="label label-primary"> Login as</label>
+                <select class="status form-control" name="optsUsrTbl" id="optsUsrTbl">
+                    <option value="tbl">  Table </option>
+                    <option value="usr"> User </option>
+                </select>
+            </p>
+            <br />
+            
+            <form action="/" method="post">
+                <p>
+                    <div class="logInUser" style="display:none">
+                        <input type="text" placeholder="Username" name="user" id="user" class="form-control" /><br />
+                        <input type="password" placeholder="Password" name="pass" id="pass" class="form-control" />
+                    </div>
+                    <div class="logInTbl" style="display:block">
+                        <select id="tblId" name="tblId" class="form-control">
+                            <option value="0"> -- Select -- </option>
+                            @foreach (var item in ViewBag.Tables as List<Resturant_System.Models.Select_Item>)
+                            {
+                                <option value="@item.value">@item.value</option>
+                            }
+                        </select>
+                    </div>
+                </p>
+                <p>
+                    <br />
+                    <input type="submit" class="btn btn-success center-block" value="Login" id="LoginBtn" />
+                    <span id="ErrLogIn" class="alert alert-danger " style="display:none" ></span>
+                </p>
+            </form>
+        </div>
+    </div>
+</div>

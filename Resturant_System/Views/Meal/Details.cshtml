@@ -1,0 +1,67 @@
+﻿@model Resturant_System.Models.Meal
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+<fieldset class="alert ">
+    <div class=" well well-sm" >
+        <legend>[ @Html.DisplayFor(model => model.Name) ]  Details</legend>
+    </div>
+
+    <div class="display-label label label-primary">
+         @Html.DisplayNameFor(model => model.Name)
+    </div>
+    <div class="display-field alert-dismissable alert">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label label label-success" >
+        @Html.DisplayNameFor(model => model.Image)
+    </div>
+    <div class="display-field alert-dismissable alert">
+        @Html.DisplayFor(model => model.Image)
+    </div>
+
+    <div class="display-label label label-warning" >
+        @Html.DisplayNameFor(model => model.Recipe)
+    </div>
+    <div class="display-field alert-dismissable alert">
+        @Html.DisplayFor(model => model.Recipe)
+    </div>
+
+    <div class="display-label label label-danger" >
+        @Html.DisplayNameFor(model => model.Available)
+    </div>
+    <div class="display-field alert-dismissable alert">
+        @Html.DisplayFor(model => model.Available)
+    </div>
+
+    <div class="display-label label label-success">
+        @Html.DisplayNameFor(model => model.Price)
+    </div>
+    <div class="display-field alert-dismissable alert">
+        @Html.DisplayFor(model => model.Price)
+    </div>
+
+    <div class="display-label label label-primary">
+        @Html.DisplayNameFor(model => model.CategoryId)
+    </div>
+    <div class="display-field alert-dismissable alert">
+        <div id="CategoryID">
+            @foreach (var items in ViewBag.CategoryID as List<Resturant_System.Models.Select_Item>)
+            {
+                if (items.id == @Model.CategoryId)
+                {
+                    <div id="">@items.value</div>
+                }
+            }
+        </div>
+    </div>
+
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

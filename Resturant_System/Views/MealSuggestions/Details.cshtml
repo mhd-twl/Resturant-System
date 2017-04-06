@@ -1,0 +1,37 @@
+﻿@model Resturant_System.Models.Meal_Suggestion
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Meal_Suggestion</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Category_Id)
+    </div>
+    <div class="display-field">
+        <div id="Category_Id">
+            @foreach (var items in ViewBag.CategoryID as List<Resturant_System.Models.Select_Item>)
+            {
+                if (items.id == @Model.Category_Id)
+                {
+                    <div id="">@items.value</div>
+                }
+            }
+        </div>
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

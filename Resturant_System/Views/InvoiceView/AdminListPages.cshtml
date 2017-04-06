@@ -1,0 +1,109 @@
+﻿<link rel="stylesheet" href="./Vertical Sliding Info Panel With jQuery_files/style.css" type="text/css" media="screen">
+<script type="text/javascript" src="./Vertical Sliding Info Panel With jQuery_files/jquery-1.3.2.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".trigger").click(function () {
+            $(".panel").toggle("fast");
+            $(this).toggleClass("active");
+            return false;
+        });
+    });
+</script>
+<style type="text/css">
+    .columns {
+        clear: both;
+        width: 80%;
+        padding: 0 0 20px 0;
+        line-height: 22px;
+    }
+
+    .colleft {
+        float: left;
+        width: 40%;
+        line-height: 22px;
+    }
+
+    .colright {
+        float: right;
+        width: 40%;
+        line-height: 22px;
+    }
+
+    ul {
+        padding: 0;
+        margin: 0;
+        list-style-type: none;
+    }
+
+        ul li {
+            padding: 0;
+            margin: 0;
+            list-style-type: none;
+        }
+
+    .titl {
+        color: darkcyan;
+    }
+</style>
+<ul>
+
+    <li>
+        <div class="btn btn-primary">
+            <div class="trigger">
+                Pages Panel <span class="fa-arrow-circle-down fa"> </span>
+            </div>
+        </div>
+        <div class="panel" style="display: none;">
+            <div class="h4 panel-info panel-heading titl">  Control Panel </div>
+            <div class="columns">
+                <div class="colleft">
+                    <ul>
+                        <li><div class="panel-heading panel-info "> Our System </div></li>
+                        <li>
+                            <ul class="panel-body">
+                                <li><i class=" icon-double-angle-right"></i> <a href="~/Home/" title="home">Home</a></li>
+                                <li><i class=" icon-double-angle-right"></i><a href="~/Component">Component</a></li>
+                                <li><i class=" icon-double-angle-right"></i><a href="~/Reservation">Reservation</a></li>
+                                <li><i class=" icon-double-angle-right"></i><a href="~/InvoiceView">Invoice List</a></li>
+                                <li><i class=" icon-double-angle-right"></i><a href="~/UserRole">User Roles </a></li>
+                                <li><i class=" icon-double-angle-right"></i><a href="~/Users">Users</a></li>
+                                <li><i class=" icon-double-angle-right"></i><a href="~/Customer_Impression">Customer Impressions</a></li>
+                                <li><i class=" icon-double-angle-right"></i><a href="~/MealSuggestions">Meal Suggestions </a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div></div>
+                <div></div>
+                <div class="colright">
+                    <ul>
+                        <li><div class="panel-heading panel-info"> Meal System </div></li>
+                        <li><span class="icon-double-angle-right" style="color:darkblue;"></span><i class=" icon-double-angle-right"></i><a href="~/Meal">Meals</a></li>
+                        <li><i class=" icon-double-angle-right"></i><a href="~/MealCategory">Meal Category</a></li>
+                        <li><i class=" icon-double-angle-right"></i><a href="~/MealContents">Meal Contents</a></li>
+
+                        <li><div class="panel-heading panel-info"> Stock System  </div></li>
+                        <li><a href="~/Goods">Goods</a></li>
+                        <li><a href="~/GoodsCategory">Goods Category</a></li>
+                        <li><a href="~/GoodsDetails">Goods Details</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+    </li>
+    <li>
+        <div class="alert alert-warning col-sm-4 ">
+            @{
+                if (Session["admin"] != null)
+                {
+                    <div>Hello 'Admin' :  Mr. @Session["admin"] </div>
+                }
+                else if (Session["user"] != null)
+                {
+                    <div> Hello 'Chef' :  Mr. @Session["user"] </div>
+                }
+            }
+        </div>
+    </li>
+</ul>

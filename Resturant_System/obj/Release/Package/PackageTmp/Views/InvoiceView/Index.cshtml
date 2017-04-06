@@ -1,0 +1,94 @@
+﻿@model IEnumerable<Resturant_System.Models.InvoiceView>
+
+@{
+    ViewBag.Title = "Invoices";
+}
+
+
+
+
+<table class="table panel">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Invoice_TableID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Invoice_Opendate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Invoice_Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Total_Cost)
+        </th>
+        <th>
+            Meals
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Extra)
+        </th>
+        <th>
+            <div class="label label-primary"> Change Invoice Status</div>
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <div id="Invoice_TableID">
+                    @foreach (var items in ViewBag.Tables as List<Resturant_System.Models.Select_Item>)
+                    {
+                        if (items.id == item.Invoice_TableID)
+                        {
+                            <div id="@items.id">@items.value</div>
+                        }
+                    }
+                </div>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Invoice_Opendate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Invoice_Status)
+            </td>
+            <td>
+                <div class="badge">
+                    @Html.DisplayFor(modelItem => item.Total_Cost) $
+                </div>
+            </td>
+            <td>
+                <div id="Meals_List">
+                    @foreach (var items in item.Meals_List)
+                    {
+                        <table class=" ">
+                            <tr class="">
+                                <td>
+                                    <div class="dropdown">
+                                        <div class="dropdown-toggle " data-toggle="dropdown">
+                                            <span class="badge">@items.Price $</span> &nbsp;
+                                            @items.Name
+                                            <span class="caret" title="Recipe"></span>
+                                        </div>
+                                        <ul class="dropdown-menu drpMyStyl" style="position:relative ba">
+                                            <li role="presentation">@items.Recipe</li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    }
+                </div>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Extra)
+            </td>
+            <td>
+                <div>
+                    @Html.ActionLink("Change Status ", "Edit/" + item.Invoice_Id)
+                </div>
+            </td>
+        </tr>
+    }
+
+</table>

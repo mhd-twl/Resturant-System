@@ -1,0 +1,26 @@
+﻿@model Resturant_System.Models.UploadObject
+
+@{
+    ViewBag.Title = "Upload image";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm("Action", "Goods", FormMethod.Post,
+                          new { enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(m => m.idOfElement, new { @Value = Model.idOfElement })
+    @Html.HiddenFor(m => m.nameOfTable, new { @Value = Model.nameOfTable })
+    <div class="label label-primary h4">
+        <label for="file">Upload Image:</label>
+    </div>
+    <div class="well well-lg">
+        <input type="file" name="file" id="file" style="width: 100%;" class="form-control field" />
+        <br/>
+    </div>
+
+    <div>
+        <input type="submit" name="Save_Img_Upload" value="Save" class="submit btn btn-primary" />
+        <input type="submit" name="Skip_Img_Upload" value="Skip" class="submit btn-link btn-info" />
+    </div>
+}

@@ -1,0 +1,56 @@
+﻿@model Resturant_System.Models.Meal_Suggestion
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Meal_Suggestion</legend>
+
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="editor-label ">
+            <span class="small-field" >
+                <select id="Category_Id" name="Category_Id" class="form-control " >
+                    @*<option value="0"> All Categories</option>*@
+                    @foreach (var item in ViewBag.CategoryID as List<Resturant_System.Models.Select_Item>)
+                    {
+                        <option value="@item.id" selected="@item.selected">@item.value</option>
+                    }
+                </select>
+            </span>
+            @*@Html.LabelFor(model => model.Category_Id)
+                div class="editor-field">
+                    @Html.EditorFor(model => model.Category_Id)
+                    @Html.ValidationMessageFor(model => model.Category_Id)
+                </div>
+            *@
+        </div>
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

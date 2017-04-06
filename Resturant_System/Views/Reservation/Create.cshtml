@@ -1,0 +1,110 @@
+﻿@model Resturant_System.Models.Reserved_Table
+
+
+
+@{
+    ViewBag.Title = "Create";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset style="border: 0 !important;">
+
+        <div class="h3 alert alert-info">Create Reservation Table</div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Table_Id)
+        </div>
+        <div class="editor-field">
+            <span>
+                <select id="Table_Id" name="Table_Id" class="form-control">
+                    <option value="0"> --- Select a Table --- </option>
+
+                    @foreach (var item in ViewBag.TablesUnRes as List<Resturant_System.Models.Select_Item>)
+                    {
+                        <option value="@item.id" selected="@item.selected">@item.value</option>
+                    }
+
+                </select>
+            </span>
+
+        </div>
+
+        <div class="editor-label">
+            @*@Html.LabelFor(model => model.Table_Status)*@
+        </div>
+        <div class="editor-field">
+            @Html.HiddenFor(model => model.Table_Status, new { Value = true })
+            @Html.ValidationMessageFor(model => model.Table_Status)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Start_Date)
+        </div>
+        <div class="editor-field">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <div class="input-group date" id="datetimepicker11">
+                        <input name="Start_Date" class="form-control" type="text">
+                        <span class="input-group-addon">
+                            <span class="fa-calendar fa alert-info"></span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <script type="text/javascript">
+                $(function () {
+                    $('#datetimepicker11').datetimepicker({
+                        icons: {
+                            time: "fa fa-clock-o",
+                            date: "fa fa-calendar",
+                            up: "fa fa-arrow-up",
+                            down: "fa fa-arrow-down"
+                        }
+                    });
+                });
+            </script>
+            <script>
+                $(function () {
+                    var $window = $(window), $body = $(document.body);
+                    $body.scrollspy({
+                        target: '.bs-sidebar'
+                    });
+                });
+                (function (i, s, o, g, r, a, m) {
+                    i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                        (i[r].q = i[r].q || []).push(arguments)
+                    }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+                })(window, document, 'script', 'analitic.js', 'ga');
+
+                ga('create', 'UA-47462200-1', 'eonasdan.github.io');
+                ga('send', 'pageview');
+            </script>
+
+        </div>
+
+        <p>
+            <input type="submit" value="Create" class="btn btn-primary" />
+        </p>
+    </fieldset>
+
+
+
+
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval", "~/bundles/bootstrap")
+
+
+}
+
+

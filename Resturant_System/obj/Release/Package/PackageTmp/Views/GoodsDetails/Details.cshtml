@@ -1,0 +1,50 @@
+﻿@model Resturant_System.Models.Goods_Details
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Goods_Details</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Quantity)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Quantity)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Price)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Price)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Insertion_Date)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Insertion_Date)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Goods_Id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Goods_Id)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Extra)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Extra)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

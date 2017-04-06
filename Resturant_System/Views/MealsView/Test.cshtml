@@ -1,0 +1,59 @@
+﻿@model List<Resturant_System.Models.MealsView>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="" style="position:fixed;right:0px;bottom:0px;">
+
+    <div>
+        <div title="add meals" style="width: 300px; height: 300px; background: url(&quot;/images/main/plate.png&quot;) no-repeat scroll 0% 0% / 120% 120% transparent;"
+             align="left"></div>
+    </div>
+</div>
+@*//===========================================*@
+
+    
+<style>
+    .myWidget:hover{
+        background-color:#ffe6b3;
+        cursor:pointer;
+    }
+    .myWidget .ui-selected {
+        background: #F39814;
+        color: white;
+    }
+</style>
+<div class="wrap" style="border: 0px !important;">
+    <button class="button"> Open a New Order </button>
+    <button class="button"> Cancel The Order </button>
+</div>
+<div class="clear"></div>
+<div class="wrap">
+    @foreach (var item in Model)
+    {
+        <div class=" panel panel-warning">
+            <div class="panel-heading hdrCtg" id="@item.Meals_Category.Id" onclick="toggleCategories(@item.Meals_Category.Id)">
+                <div id="catgryHdr"
+                     class="welcome_desc h3 span">@item.Meals_Category.Name</div>
+                </div>
+                <div class="panel-body bdyCtg" id="ctgBdy_@item.Meals_Category.Id" style="display:none;">
+                    <div class="section group">
+                        @foreach (var meals in item.Meals_List)
+                        {
+                            <div class="listview_1_of_2 images_1_of_2 ui-widget-content myWidget">
+                                <div class="listimg listimg_2_of_1">
+                                    <a href="#"><img src="@meals.Image" alt=""><span>$@meals.Price</span></a>
+                                </div>
+                                <div class="text list_2_of_1">
+                                    <h3>@meals.Name</h3>
+                                    <p>@meals.Recipe.</p>
+                                    <div class="read_more"><a href="/Meal/Details/@meals.Id">Read More</a></div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+    }
+</div>

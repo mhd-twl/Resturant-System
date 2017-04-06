@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="Resturnta" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^D:\\Resturant_System\\Resturant_System\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^D:\\Resturant_System\\Resturant_System\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="Add write permission to App_Data Folder" description="Add write permission to App_Data folder" value="Resturnta/App_Data" tags="Hidden">
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^D:\\Resturant_System\\Resturant_System\\obj\\Release\\Package\\PackageTmp\\App_Data$" />
+  </parameter>
+  <parameter name="ComponentDBContext-Web.config Connection String" description="" value="Data Source=(LocalDb)\v11.0;AttachDbFilename=D:\Resturant_System\Resturant_System\DB\Resturant.mdf;Integrated Security=True;MultipleActiveResultSets=true" tags="">
+    <parameterEntry kind="XmlFile" scope="D:\\Resturant_System\\Resturant_System\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='ComponentDBContext']/@connectionString" />
+  </parameter>
+  <parameter name="Component_PropertiesDBContext-Web.config Connection String" description="" value="Data Source=(LocalDb)\v11.0;AttachDbFilename=D:\Resturant_System\Resturant_System\DB\Resturant.mdf;Integrated Security=True;MultipleActiveResultSets=true" tags="">
+    <parameterEntry kind="XmlFile" scope="D:\\Resturant_System\\Resturant_System\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='Component_PropertiesDBContext']/@connectionString" />
+  </parameter>
+  <parameter name="Component_Properties_DetailsDBContext-Web.config Connection String" description="" value="Data Source=(LocalDb)\v11.0;AttachDbFilename=D:\Resturant_System\Resturant_System\DB\Resturant.mdf;Integrated Security=True;MultipleActiveResultSets=true" tags="">
+    <parameterEntry kind="XmlFile" scope="D:\\Resturant_System\\Resturant_System\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='Component_Properties_DetailsDBContext']/@connectionString" />
+  </parameter>
+  <parameter name="Component_Properties_RelationDBContext-Web.config Connection String" description="" value="Data Source=(LocalDb)\v11.0;AttachDbFilename=D:\Resturant_System\Resturant_System\DB\Resturant.mdf;Integrated Security=True;MultipleActiveResultSets=true" tags="">
+    <parameterEntry kind="XmlFile" scope="D:\\Resturant_System\\Resturant_System\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='Component_Properties_RelationDBContext']/@connectionString" />
+  </parameter>
+  <parameter name="Customer_ImpressionDBContext-Web.config Connection String" description="" value="Data Source=(LocalDb)\v11.0;AttachDbFilename=D:\Resturant_System\Resturant_System\DB\Resturant.mdf;Integrated Security=True;MultipleActiveResultSets=true" tags="">
+    <parameterEntry kind="XmlFile" scope="D:\\Resturant_System\\Resturant_System\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='Customer_ImpressionDBContext']/@connectionString" />
+  </parameter>
+  <parameter name="DefaultConnection-Web.config Connection String" description="" value="Data Source=(LocalDb)\v11.0;Initial Catalog=aspnet-Resturant_System-20141017191854;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|\aspnet-Resturant_System-20141017191854.mdf" tags="">
+    <parameterEntry kind="XmlFile" scope="D:\\Resturant_System\\Resturant_System\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+  </parameter>
+  <parameter name="D__RESTURANT_SYSTEM_DB_RESTURANT_MDFConnectionString-Web.config Connection String" description="" value="Data Source=.;Initial Catalog=D:\RESTURANT_SYSTEM\DB\RESTURANT.MDF;Integrated Security=True" tags="">
+    <parameterEntry kind="XmlFile" scope="D:\\Resturant_System\\Resturant_System\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='D__RESTURANT_SYSTEM_DB_RESTURANT_MDFConnectionString']/@connectionString" />
+  </parameter>
+  <parameter name="GoodsDBContext-Web.config Connection String" description="" value="Data Source=(LocalDb)\v11.0;AttachDbFilename=D:\Resturant_System\Resturant_System\DB\Resturant.mdf;Integrated Security=True;MultipleActiveResultSets=true" tags="">
+    <parameterEntry kind="XmlFile" scope="D:\\Resturant_System\\Resturant_System\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='GoodsDBContext']/@connectionString" />
+  </parameter>
+  <parameter name="Goods_CategoryDBContext-Web.config Connection String" description="" value="Data Source=(LocalDb)\v11.0;AttachDbFilename=D:\Resturant_System\Resturant_System\DB\Resturant.mdf;Integrated Security=True;MultipleActiveResultSets=true" tags="">
+    <parameterEntry kind="XmlFile" scope="D:\\Resturant_System\\Resturant_System\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='Goods_CategoryDBContext']/@connectionString" />
+  </parameter>
+  <parameter name="Goods_DetailsDBContext-Web.config Connection String" description="" value="Data Source=(LocalDb)\v11.0;AttachDbFilename=D:\Resturant_System\Resturant_System\DB\Resturant.mdf;Integrated Security=True;MultipleActiveResultSets=true" tags="">
+    <parameterEntry kind="XmlFile" scope="D:\\Resturant_System\\Resturant_System\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='Goods_DetailsDBContext']/@connectionString" />
+  </parameter>
+  <parameter name="InvoiceDBContext-Web.config Connection String" description="" value="Data Source=(LocalDb)\v11.0;AttachDbFilename=D:\Resturant_System\Resturant_System\DB\Resturant.mdf;Integrated Security=True;MultipleActiveResultSets=true" tags="">
+    <parameterEntry kind="XmlFile" scope="D:\\Resturant_System\\Resturant_System\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='InvoiceDBContext']/@connectionString" />
+  </parameter>
+  <parameter name="Invoice_StatusDBContext-Web.config Connection String" description="" value="Data Source=(LocalDb)\v11.0;AttachDbFilename=D:\Resturant_System\Resturant_System\DB\Resturant.mdf;Integrated Security=True;MultipleActiveResultSets=true" tags="">
+    <parameterEntry kind="XmlFile" scope="D:\\Resturant_System\\Resturant_System\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='Invoice_StatusDBContext']/@connectionString" />
+  </parameter>
+  <parameter name="MealDBContext-Web.config Connection String" description="" value="Data Source=(LocalDb)\v11.0;AttachDbFilename=D:\Resturant_System\Resturant_System\DB\Resturant.mdf;Integrated Security=True;MultipleActiveResultSets=true" tags="">
+    <parameterEntry kind="XmlFile" scope="D:\\Resturant_System\\Resturant_System\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='MealDBContext']/@connectionString" />
+  </parameter>
+  <parameter name="Meal_CategoryDBContext-Web.config Connection String" description="" value="Data Source=(LocalDb)\v11.0;AttachDbFilename=D:\Resturant_System\Resturant_System\DB\Resturant.mdf;Integrated Security=True;MultipleActiveResultSets=true" tags="">
+    <parameterEntry kind="XmlFile" scope="D:\\Resturant_System\\Resturant_System\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='Meal_CategoryDBContext']/@connectionString" />
+  </parameter>
+  <parameter name="Meal_ContentDBContext-Web.config Connection String" description="" value="Data Source=(LocalDb)\v11.0;AttachDbFilename=D:\Resturant_System\Resturant_System\DB\Resturant.mdf;Integrated Security=True;MultipleActiveResultSets=true" tags="">
+    <parameterEntry kind="XmlFile" scope="D:\\Resturant_System\\Resturant_System\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='Meal_ContentDBContext']/@connectionString" />
+  </parameter>
+  <parameter name="Meal_SuggestionDBContext-Web.config Connection String" description="" value="Data Source=(LocalDb)\v11.0;AttachDbFilename=D:\Resturant_System\Resturant_System\DB\Resturant.mdf;Integrated Security=True;MultipleActiveResultSets=true" tags="">
+    <parameterEntry kind="XmlFile" scope="D:\\Resturant_System\\Resturant_System\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='Meal_SuggestionDBContext']/@connectionString" />
+  </parameter>
+  <parameter name="OrderDBContext-Web.config Connection String" description="" value="Data Source=(LocalDb)\v11.0;AttachDbFilename=D:\Resturant_System\Resturant_System\DB\Resturant.mdf;Integrated Security=True;MultipleActiveResultSets=true" tags="">
+    <parameterEntry kind="XmlFile" scope="D:\\Resturant_System\\Resturant_System\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='OrderDBContext']/@connectionString" />
+  </parameter>
+  <parameter name="Reserved_TableDBContext-Web.config Connection String" description="" value="Data Source=(LocalDb)\v11.0;AttachDbFilename=D:\Resturant_System\Resturant_System\DB\Resturant.mdf;Integrated Security=True;MultipleActiveResultSets=true" tags="">
+    <parameterEntry kind="XmlFile" scope="D:\\Resturant_System\\Resturant_System\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='Reserved_TableDBContext']/@connectionString" />
+  </parameter>
+  <parameter name="ResturantConnectionString-Web.config Connection String" description="" value="Data Source=(LocalDb)\v11.0;AttachDbFilename=|DataDirectory|\Resturant.mdf;Integrated Security=True;MultipleActiveResultSets=True" tags="">
+    <parameterEntry kind="XmlFile" scope="D:\\Resturant_System\\Resturant_System\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='ResturantConnectionString']/@connectionString" />
+  </parameter>
+  <parameter name="Resturant_System.Models.Comp_ItemDBContext-Web.config Connection String" description="" value="Resturant_System.Models.Comp_ItemDBContext_ConnectionString" tags="">
+    <parameterEntry kind="XmlFile" scope="D:\\Resturant_System\\Resturant_System\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='Resturant_System.Models.Comp_ItemDBContext']/@connectionString" />
+  </parameter>
+  <parameter name="Resturant_System.Models.InvoiceViewDBContext-Web.config Connection String" description="" value="Resturant_System.Models.InvoiceViewDBContext_ConnectionString" tags="">
+    <parameterEntry kind="XmlFile" scope="D:\\Resturant_System\\Resturant_System\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='Resturant_System.Models.InvoiceViewDBContext']/@connectionString" />
+  </parameter>
+  <parameter name="Resturant_System.Models.MealsViewDBContext-Web.config Connection String" description="" value="Resturant_System.Models.MealsViewDBContext_ConnectionString" tags="">
+    <parameterEntry kind="XmlFile" scope="D:\\Resturant_System\\Resturant_System\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='Resturant_System.Models.MealsViewDBContext']/@connectionString" />
+  </parameter>
+  <parameter name="TableDBContext-Web.config Connection String" description="" value="Data Source=(LocalDb)\v11.0;AttachDbFilename=D:\Resturant_System\Resturant_System\DB\Resturant.mdf;Integrated Security=True;MultipleActiveResultSets=true" tags="">
+    <parameterEntry kind="XmlFile" scope="D:\\Resturant_System\\Resturant_System\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='TableDBContext']/@connectionString" />
+  </parameter>
+  <parameter name="UsersDBContext-Web.config Connection String" description="" value="Data Source=(LocalDb)\v11.0;AttachDbFilename=D:\Resturant_System\Resturant_System\DB\Resturant.mdf;Integrated Security=True;MultipleActiveResultSets=true" tags="">
+    <parameterEntry kind="XmlFile" scope="D:\\Resturant_System\\Resturant_System\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='UsersDBContext']/@connectionString" />
+  </parameter>
+  <parameter name="User_RoleDBContext-Web.config Connection String" description="" value="Data Source=(LocalDb)\v11.0;AttachDbFilename=D:\Resturant_System\Resturant_System\DB\Resturant.mdf;Integrated Security=True;MultipleActiveResultSets=true" tags="">
+    <parameterEntry kind="XmlFile" scope="D:\\Resturant_System\\Resturant_System\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='User_RoleDBContext']/@connectionString" />
+  </parameter>
+</parameters>

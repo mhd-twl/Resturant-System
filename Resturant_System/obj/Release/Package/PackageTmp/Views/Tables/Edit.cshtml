@@ -1,0 +1,54 @@
+﻿@model Resturant_System.Models.Table
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Table</legend>
+
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Unit_Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Unit_Name)
+            @Html.ValidationMessageFor(model => model.Unit_Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Number_of_Chairs)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Number_of_Chairs)
+            @Html.ValidationMessageFor(model => model.Number_of_Chairs)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Extra)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Extra)
+            @Html.ValidationMessageFor(model => model.Extra)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

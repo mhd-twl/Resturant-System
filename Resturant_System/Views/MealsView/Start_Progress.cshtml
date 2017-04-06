@@ -1,0 +1,38 @@
+﻿@model List<Resturant_System.Models.MealsView>
+<div class="modal fade" id="ProgressModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Waiting message</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    @*<div class="form-group">
+                        <label for="recipient-name" class="control-label">Recipient:</label>
+                        <input type="text" class="form-control" id="recipient-name">
+                    </div>*@
+                    <div class="form-group">
+                        @*<label for="message-text" class="control-label">Message:</label>
+                        <textarea class="form-control" id="additional_notes"></textarea>*@
+                        <label for="message-text" class="control-label h3">Welcome To Our Service :</label>
+                        <label for="message-text" class="control-label h5">Your order has been sent to the chefs.</label>
+                        <label for="message-text" class="control-label h5">  Please wait...</label>
+                        <div class="progress">
+                            @{ int perc = 35; }
+                            <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="@perc" aria-valuemin="0" aria-valuemax="100" style="width: @perc%">
+                            </div>
+                            <span class="sr">@perc % Complete</span>
+                        </div>
+                        
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                @*<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" id="AttachNotes" >Attach  with Order </button>*@
+            </div>
+        </div>
+    </div>
+</div>
+

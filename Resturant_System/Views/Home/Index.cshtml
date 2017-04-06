@@ -1,0 +1,142 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .backg {
+        position:absolute;
+        width:100%;
+        height:100%;
+        background-color:rgba(70, 70, 70, 0.42);
+        top:0px;
+        left:0px;
+       
+    }
+    .loginPnl {
+        position: absolute;
+        width: 40%;
+        height: 40%;
+        left: 30%;
+        top: 30%;
+    }
+</style>
+
+ 
+ @Html.Partial("LogIn") 
+<!---start-content---->
+<div class="main">
+    <div class="wrap">
+        <div class="welcome_desc">
+            <div class="section group">
+                <div class="col_1_of_2 span_1_of_2">
+                    <h3>Welcome to  <br> <span>Delicious</span></h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                    <a href="#" class="button">Read More</a>
+                </div>
+                <div class="col_1_of_2 span_1_of_2">
+                    <div class="grid_img">
+                        <img src="images/today_special.jpg" alt="" />
+                    </div>
+                    <div class="price_desc">
+                        <a href="#">
+                            <div class="price">$50</div>
+                            <div class="price_text"><h4><span>Today Special</span>*eiusmod tempor incididunt ut labore</h4></div>
+                            <div class="clear"></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="items_desc">
+        <div class="wrap">
+            <div class="section group">
+                <div class="listview_1_of_2 images_1_of_2">
+                    <div class="listimg listimg_2_of_1">
+                        <a href="#"><img src="images/item1.jpg" alt="" /><span>$45</span></a>
+                    </div>
+                    <div class="text list_2_of_1">
+                        <h3>Lorem Ipsum is simply</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt  ut labore et dolore.</p>
+                        <div class="read_more"><a href="#">Read More</a></div>
+                    </div>
+                </div>
+                <div class="listview_1_of_2 images_1_of_2">
+                    <div class="listimg listimg_2_of_1">
+                        <a href="#"><img src="images/item2.jpg" alt="" /><span>$50</span></a>
+                    </div>
+                    <div class="text list_2_of_1">
+                        <h3>Lorem Ipsum is simply</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt  ut labore et dolore.</p>
+                        <div class="read_more"><a href="#">Read More</a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="section group">
+                <div class="listview_1_of_2 images_1_of_2">
+                    <div class="listimg listimg_2_of_1">
+                        <a href="#"><img src="images/item3.jpg" alt="" /><span>$35</span></a>
+                    </div>
+                    <div class="text list_2_of_1">
+                        <h3>Lorem Ipsum is simply</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt  ut labore et dolore.</p>
+                        <div class="read_more"><a href="#">Read More</a></div>
+                    </div>
+                </div>
+                <div class="listview_1_of_2 images_1_of_2">
+                    <div class="listimg listimg_2_of_1">
+                        <a href="#"><img src="images/item4.jpg" alt="" /><span>$40</span></a>
+                    </div>
+                    <div class="text list_2_of_1">
+                        <h3>Lorem Ipsum is simply</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt  ut labore et dolore.</p>
+                        <div class="read_more"><a href="#">Read More</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content_bottom">
+        <div class="wrap">
+            <div class="section group">
+                <div class="col_1_of_3 span_1_of_3">
+                    <h3>Our Chefs</h3>
+                    <img src="images/chefs.jpg" alt="" />
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <div class="read_more"><a href="#">Read More</a></div>
+                </div>
+                <div class="col_1_of_3 span_1_of_3">
+                    <h3>Special Dishes </h3>
+                    <ul class="dishes_list">
+                        <li><a href="#">Consectetur adipisicing elit</a></li>
+                        <li><a href="#">Sed do eiusmod tempor incididunt</a></li>
+                        <li><a href="#">Labore et dolore magna aliqua.</a></li>
+                        <li><a href="#">Sed do eiusmod tempor Dolore</a></li>
+                        <li><a href="#">Abore et dolore magna Dolore elit</a></li>
+                        <li><a href="#">Incididunt ut labore et dolore</a></li>
+                        <li><a href="#">Dolore magna aliqua Dolore elit</a></li>
+                        <li><a href="#">Adipisicing elit, sed do eiusmod</a></li>
+                        <div class="clear"> </div>
+                    </ul>
+                </div>
+                <div class="col_1_of_3 span_1_of_3">
+                    <div class="location">
+                        <h3>Location</h3>
+                        <ul>
+                            <li>1-22-003-55,</li>
+                            <li>Neque porro quisquam,</li>
+                            <li>dolor sit amet,</li>
+                            <li>USA.</li>
+                            <li>info(at)yourcompany.com</li>
+                            <li><span>Mobile :</span> +12 345 67890</li>
+                            <li><span>Telephone :</span> +00 000 00000</li>
+                            <li><span>Fax :</span> +00 000 00000</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!---End-main---->

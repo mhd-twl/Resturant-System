@@ -1,0 +1,50 @@
+﻿@model Resturant_System.Models.Invoice
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2></h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>
+            Editting Invoice Of
+            <span id="Tabel_Id">
+                @foreach (var items in ViewBag.Tables as List<Resturant_System.Models.Select_Item>)
+                {
+                    <span id="@items.id">@items.value</span>
+                }
+            </span>
+        </legend>
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.Open_Date)
+        @Html.HiddenFor(model => model.Table_Id)
+        @Html.HiddenFor(model => model.Close_Date, new { Value = DateTime.MaxValue })
+        <div class="editor-label">
+            <span>
+                <select id="Invoice_Status" name="Invoice_Status" class="form-control">
+                    @foreach (var item in ViewBag.InvSts as List<Resturant_System.Models.Select_Item>)
+                    {
+                        <option value="@item.id" selected="@item.selected">@item.value</option>
+                    }
+                </select>
+            </span>
+        </div>
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

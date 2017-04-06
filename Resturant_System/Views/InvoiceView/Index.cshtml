@@ -1,0 +1,168 @@
+﻿@model IEnumerable<Resturant_System.Models.InvoiceView>
+@using Newtonsoft.Json
+
+@{
+    ViewBag.Title = "Invoices";
+}
+
+
+@Html.Partial("AdminListPages")
+
+<table class="table panel">
+    <tr>
+        <th>
+            <div class="label label-success">
+                @Html.DisplayNameFor(model => model.Invoice_TableID)
+            </div>
+        </th>
+        <th>
+            <div class="label label-danger">  @Html.DisplayNameFor(model => model.Invoice_Opendate) </div>
+        </th>
+        <th>
+            <div class="label label-warning"> @Html.DisplayNameFor(model => model.Invoice_Status) </div>
+        </th>
+        <th>
+            <div class="label label-success">  @Html.DisplayNameFor(model => model.Total_Cost) </div>
+        </th>
+        <th>
+            <div class="label label-warning">
+                Meals
+            </div>
+        </th>
+        <th>
+            <div class="label label-danger">
+                @Html.DisplayNameFor(model => model.Extra)
+            </div>
+        </th>
+        <th>
+            <div class="label label-primary"> Change Invoice Status</div>
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <div id="Invoice_TableID">
+                    @foreach (var items in ViewBag.Tables as List<Resturant_System.Models.Select_Item>)
+                    {
+                        if (items.id == item.Invoice_TableID)
+                        {
+                            <div id="@items.id">@items.value</div>
+                        }
+                    }
+                </div>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Invoice_Opendate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Invoice_Status)
+            </td>
+            <td>
+                <div class="badge">
+                    @Html.DisplayFor(modelItem => item.Total_Cost) $
+                </div>
+            </td>
+            <td>
+                <div id="Meals_List">
+                    @foreach (var items in item.Meals_List)
+                    {
+                        <table class=" ">
+                            <tr class="">
+                                <td>
+                                    <div class="dropdown">
+                                        <div class="dropdown-toggle " data-toggle="dropdown">
+                                            <span class="badge">@items.Price $</span> &nbsp;
+                                            @items.Name
+                                            <span class="caret" title="Recipe"></span>
+                                        </div>
+                                        <ul class="dropdown-menu drpMyStyl" style="position:relative ba">
+                                            <li role="presentation">@items.Recipe</li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    }
+                </div>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Extra)
+            </td>
+            @*<td>
+                    <div>
+                        @Html.ActionLink("Change Status ", "Edit/" + item.Invoice_Id)
+                    </div>
+                </td>*@
+
+            <td style=" width: 25%; ">
+                <style type="text/css">
+                </style>
+                <div class="col-md-7 center-block" style="width: 100%;">
+                    <div class="switch-toggle switch-3 well">
+                        @foreach (var stts in ViewBag.InvSts as List<Resturant_System.Models.Select_Item>)
+                        {
+                            Session["user_chef"] = true;
+                            if (Session["user_chef"] != null && stts.id != 6)
+                            {
+
+                                string strId = stts.id + "_" + item.Invoice_Id;
+
+                                if (item.Invoice_Status == @stts.value)
+                                {
+                                    <input id="@strId" name="view3_@item.Invoice_Id" checked="" type="radio">
+                                    <label for="@strId" onclick="changStts(@stts.id , @item.Invoice_Id)">
+                                        @*class="stts_@stts.id">*@
+                                        @stts.value
+                                    </label>
+                                }
+                                else
+                                {
+                                    <input id="@strId" name="view3_@item.Invoice_Id" type="radio">
+                                    <label for="@strId" onclick="changStts(@stts.id , @item.Invoice_Id)">
+                                        @stts.value
+                                    </label>
+                                }
+                            }
+                        }
+                        @*<input id="day4" name="view3" type="radio">
+                            <label for="day4" onclick="">Day</label>
+
+                            <input id="week5" name="view3" type="radio">
+                            <label for="week5" onclick="">Week</label>
+
+                            <input id="month6" name="view3" type="radio">
+                            <label for="month6" onclick="">Month</label>
+
+                            <input id="year7" name="view3" type="radio">
+                            <label for="year7" onclick="">Year</label>*@
+                        <a class="btn btn-primary"></a>
+                    </div>
+                </div>
+
+            </td>
+        </tr>
+    }
+
+</table>
+<script>
+
+    // (List < string > invoc)
+    function changStts(sid, iid) {
+        lstt = [sid, iid];
+        $.ajax({
+            type: "GET",
+            traditional: true,
+            url: "/InvoiceView/EditInvoice",
+            dataType: "json",
+            data: { invoc: lstt },
+            success: location.reload(),  //changeValusMealView,
+            error: console.log("no")
+        });
+
+    }
+    $(document).ready(function () {
+        //// var changeValusMealView = function (data) {        }
+    });
+</script>

@@ -1,0 +1,45 @@
+﻿/*  for new class of style  */
+.menu_bkgdimg {
+    ;
+    position : relative;
+    
+    
+    
+}
+.myDropdownMenu{
+    display: none;
+}
+.myDropdown {
+}
+.drpMyStyl{
+    position: relative;
+    background-color: rgba(151, 151, 151, 0.1);
+    border: 0px none !important;
+    box-shadow: inherit;
+    left: 70% !important;
+    border-radius: 20% !important;
+    padding: 2% !important;
+    word-wrap: break-word !important;
+}
+.hdrCtg {
+    cursor:pointer;
+}
+
+/*!
+ * Bootstrap v3.3.1 (http://getbootstrap.com)
+ * Copyright 2011-2014 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
+.progress-striped .progress-bar, .progress-bar-striped {
+background-image: -webkit-linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
+background-image: -o-linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
+background-image: linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
+-webkit-background-size: 40px 40px;
+background-size: 40px 40px;
+}
+
+.progress.active .progress-bar, .progress-bar.active {
+-webkit-animation: progress-bar-stripes 2s linear infinite;
+-o-animation: progress-bar-stripes 2s linear infinite;
+animation: progress-bar-stripes 2s linear infinite;
+}

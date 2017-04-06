@@ -1,0 +1,26 @@
+﻿/*  for new class of style  */
+.menu_bkgdimg {
+    ;
+    position : relative;
+    
+    
+    
+}
+.myDropdownMenu{
+    display: none;
+}
+.myDropdown {
+}
+.drpMyStyl{
+    position: relative;
+    background-color: rgba(151, 151, 151, 0.1);
+    border: 0px none !important;
+    box-shadow: inherit;
+    left: 70% !important;
+    border-radius: 20% !important;
+    padding: 2% !important;
+    word-wrap: break-word !important;
+}
+.hdrCtg {
+    cursor:pointer;
+}

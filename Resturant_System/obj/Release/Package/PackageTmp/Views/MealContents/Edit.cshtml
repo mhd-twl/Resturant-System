@@ -1,0 +1,88 @@
+﻿@model Resturant_System.Models.Meal_Content
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Meal_Content</legend>
+
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Quantity)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Quantity)
+            @Html.ValidationMessageFor(model => model.Quantity)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Unit)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Unit)
+            @Html.ValidationMessageFor(model => model.Unit)
+        </div>
+
+        <div class="editor-label">
+            <span>
+                <select id="Meal_Id" name="Meal_Id" class="form-control">
+                    <option value="0"> All Meals</option>
+                    @foreach (var item in ViewBag.Meal_Ids as List<Resturant_System.Models.Select_Item>)
+                    {
+                        <option value="@item.id" selected="@item.selected">@item.value</option>
+                    }
+                </select>
+            </span>
+            @*@Html.LabelFor(model => model.Meal_Id)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Meal_Id)
+            @Html.ValidationMessageFor(model => model.Meal_Id)*@
+        </div>
+
+        <div class="editor-label">
+            <span>
+                <select id="Goods_Id" name="Goods_Id" class="form-control">
+                    <option value="0"> All Goods</option>
+                    @foreach (var item in ViewBag.Goods_Ids as List<Resturant_System.Models.Select_Item>)
+                    {
+                        <option value="@item.id" selected="@item.selected">@item.value</option>
+                    }
+                </select>
+            </span>
+            @*@Html.LabelFor(model => model.Goods_Id)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Goods_Id)
+            @Html.ValidationMessageFor(model => model.Goods_Id)*@
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Extra)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Extra)
+            @Html.ValidationMessageFor(model => model.Extra)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

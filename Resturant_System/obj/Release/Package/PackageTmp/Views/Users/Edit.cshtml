@@ -1,0 +1,112 @@
+﻿@model Resturant_System.Models.Users
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Users</legend>
+
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.HiddenFor(model => model.Image, new { @Value = "/images/main/No_image_available.jpg" })
+            @*@Html.LabelFor(model => model.Image)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Image)
+            @Html.ValidationMessageFor(model => model.Image)*@
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Username)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Username)
+            @Html.ValidationMessageFor(model => model.Username)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Password)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Password)
+            @Html.ValidationMessageFor(model => model.Password)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Phone)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Phone)
+            @Html.ValidationMessageFor(model => model.Phone)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Address)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Address)
+            @Html.ValidationMessageFor(model => model.Address)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Active)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Active)
+            @Html.ValidationMessageFor(model => model.Active)
+        </div>
+
+        <div class="editor-label">
+            <span>
+                <select id="Role_id" name="Role_id" class="form-control">
+                    <option value="0"> All Roles</option>
+                    @foreach (var item in ViewBag.Role_id as List<Resturant_System.Models.Select_Item>)
+                    {
+                        <option value="@item.id" selected="@item.selected">@item.value</option>
+                    }
+                </select>
+            </span>
+            @*@Html.LabelFor(model => model.Role_id)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Role_id)
+            @Html.ValidationMessageFor(model => model.Role_id)*@
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Extra)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Extra)
+            @Html.ValidationMessageFor(model => model.Extra)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

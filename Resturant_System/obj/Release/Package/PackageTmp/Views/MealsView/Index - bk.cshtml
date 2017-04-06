@@ -1,0 +1,200 @@
+﻿@model List<Resturant_System.Models.MealsView>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="" style="position:fixed;right:0px;bottom:0px;">
+
+    <style>
+        .plante {
+            cursor: pointer;
+            width: 300px;
+            height: 300px;
+            background: url('/images/main/plate.png') no-repeat scroll 0% 0% / 120% 120% transparent;
+            text-align: "left";
+        }
+    </style>
+    <div id="cart">
+        <div title="add meals" class="ui-widget-content "
+             style ="cursor: pointer; width: 300px; height: 300px; background: url(&quot;/images/main/plate.png&quot;) no-repeat scroll 0% 0% / 120% 120% transparent ! important;" >
+                <ol style="position: absolute; text-align: center; margin: 0px; padding: 0px; top: 50% !important; left: 50% !important;">
+                    <li class="placeholder">Add your items here</li>
+                </ol>
+            </div>
+        </div>
+</div>
+
+
+<style>
+    #feedback {
+        font-size: 1.4em;
+    }
+
+    .ui-widget-content {
+        border: 0;
+    }
+
+    #selectable .ui-selecting {
+        background: #FECA40;
+    }
+
+    #selectable .ui-selected {
+        background: #F39814;
+        color: white;
+    }
+
+    #selectable {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        width: 60%;
+    }
+
+        #selectable li {
+            margin: 3px;
+            padding: 0.4em;
+            font-size: 1.4em;
+            height: 18px;
+        }
+</style>
+<style>
+    .myWidget:hover {
+        background-color: #ffe6b3;
+        cursor: pointer;
+    }
+
+    .myWidget .ui-selected {
+        background: #F39814;
+        color: white;
+    }
+</style>
+<div class="wrap" style="border: 0px !important;">
+    <button class="button"> Open a New Order </button>
+    <button class="button"> Cancel The Order </button>
+</div>
+<div class="clear"></div>
+<div class="wrap" id="warpdiv">
+    @foreach (var item in Model)
+    {
+        <div class=" panel panel-warning">
+            <div class="panel-heading hdrCtg" id="@item.Meals_Category.Id" onclick="toggleCategories(@item.Meals_Category.Id)">
+                <div id="catgryHdr"
+                     class="welcome_desc h3 span">@item.Meals_Category.Name</div>
+                </div>
+                <div class="panel-body bdyCtg" id="ctgBdy_@item.Meals_Category.Id" style="display:none;">
+                    <div class="section group" id="lst">
+                        @foreach (var meals in item.Meals_List)
+                        {
+                            <div class="listview_1_of_2 images_1_of_2 ui-widget-content myWidget">
+                                <div class="listimg listimg_2_of_1">
+                                    <a href="#"><img src="@meals.Image" alt=""><span>$@meals.Price</span></a>
+                                </div>
+                                <div class="text list_2_of_1">
+                                    <h3>@meals.Name</h3>
+                                    <p>@meals.Recipe.</p>
+                                    <div class="read_more"><a href="/Meal/Details/@meals.Id">Read More</a></div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+    }
+</div>
+@*//----------------------------------------------------------------------------*@
+
+
+<style>
+    h1 {
+        padding: .2em;
+        margin: 0;
+    }
+
+    #products {
+        float: left;
+        width: 500px;
+        margin-right: 2em;
+    }
+    .ui-widget-content {
+        background: rgba(254, 254, 254, 0.11) !important;
+        border: 0 !important;
+    }
+        #cart; {
+        //width: 200px;
+        //float: left;
+        //margin-top: 1em;
+    }
+        /* style the list to maximize the droppable hitarea */
+        #cart ol {
+            margin: 0;
+            padding: 1em 0 1em 3em;
+        }
+</style>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+
+@section scripts {
+    <script type="text/javascript">
+        $(function () {
+            $("#catalog").accordion();
+            console.log("hello");
+            $("#catalog li").draggable({
+                appendTo: "body",
+                helper: "clone"
+            });
+            $("#cart ol").droppable({
+                activeClass: "ui-state-default",
+                hoverClass: "ui-state-hover",
+                accept: ":not(.ui-sortable-helper)",
+                drop: function (event, ui) {
+                    $(this).find(".placeholder").remove();
+                    $("<li></li>").text(ui.draggable.text()).appendTo(this);
+                }
+            }).sortable({
+                items: "li:not(.placeholder)",
+                sort: function () {
+                    $(this).removeClass("ui-state-default");
+                }
+            });
+        });
+    </script>
+}
+
+<div id="products">
+    <h1 class="ui-widget-header">Products</h1>
+    <div id="catalog">
+        <h2><a href="#">T-Shirts</a></h2>
+        <div>
+            <ul>
+                <li>Lolcat Shirt</li>
+                <li>Cheezeburger Shirt</li>
+                <li>Buckit Shirt</li>
+            </ul>
+        </div>
+        <h2><a href="#">Bags</a></h2>
+        <div>
+            <ul>
+                <li>Zebra Striped</li>
+                <li>Black Leather</li>
+                <li>Alligator Leather</li>
+            </ul>
+        </div>
+        <h2><a href="#">Gadgets</a></h2>
+        <div>
+            <ul>
+                <li>iPhone</li>
+                <li>iPod</li>
+                <li>iPad</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div id="cart">
+    <h1 class="ui-widget-header">Shopping Cart</h1>
+    <div class="ui-widget-content">
+        <ol>
+            <li class="placeholder">Add your items here</li>
+        </ol>
+    </div>
+</div>
+

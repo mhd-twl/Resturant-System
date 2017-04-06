@@ -1,0 +1,368 @@
+﻿@model List<Resturant_System.Models.MealsView>
+@using Newtonsoft.Json
+
+@{
+    ViewBag.Title = "Index";
+    string tableUnt = Session["table"] as string;
+}
+@Html.Partial("Add_Notes")
+@Html.Partial("Start_Progress" ,Model )
+<div class="MealViewBody ">
+    <div class="MealViewBodyIner ">
+        <div id="CaRtInv" style="position:fixed;right:0px;bottom:0px;">
+            <div id="cart">
+                <div class="ttlPrc alert alert-warning" style="float: right;">
+                    <span class="btn" id="addNotes" title="Add Notes" data-toggle="modal" data-target="#NoteModal" > (+)  </span>
+                    <button id="send" class="btn label-warning h4 " data-toggle="modal" data-target="#ProgressModal">
+                        <b> Send</b>   <span class=" fa-share-square-o fa-1x fa"></span>
+                    </button> ||
+                    <span class="ttlprc2 alert"> <span class="prcMeal" style="padding-bottom: 0px;" id="TTLPRC"></span></span>
+                </div>
+                <div title="add meals" class="ui-widget-content "
+                     style="cursor: pointer; width: 300px; height: 300px; background: url(&quot;/images/main/plate.png&quot;) no-repeat scroll 0% 0% / 120% 120% transparent ! important;">
+                    <ol style="position: absolute; text-align: center; margin: 10%; padding: 0px; top: 50% !important; min-height: 5%; min-width: 5%; left: 30% !important;">
+                        <li class="placeholder"> Add Meals <br />Name </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="viewMealBody ">
+            <div class="wrap" style="border: 0px !important;">
+                @*<label class="alert alert-warning" >Our Menu</label>*@
+                <button class="button" id="opnInv"> Open an Order </button>
+                <button class="button" id="cnlInv"> Cancel The Order </button>
+            </div>
+            <div class="clear"></div>
+            <div class="wrap" id="warpdiv">
+                <div class="label alert-warning col-md-6">
+                    <div> Table :  <b>  #T4 </b> </div>      
+                    </div>
+                <div class="label alert-info col-md-3">
+                    <div> Status :  <span id="stts_tbl_inv">   </span> </div>
+                </div>
+                <div id="products">
+                    
+                    <div id="catalog">
+                        @foreach (var item in Model)
+                        {
+                            <h2><a href="#"><b>@item.Meals_Category.Name</b></a></h2>
+                            <div>
+                                <ul>
+                                    @foreach (var meals in item.Meals_List)
+                                    {
+                                        <li>
+                                            <div class="listview_1_of_2 images_1_of_2 ui-widget-content myWidget">
+                                                <table>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="listimg listimg_2_of_1" style="width: auto !important;" draggable="false">
+                                                                <a href="#"><img src="@meals.Image" class="imgMeal" alt=""><span class="prcMeal">$@meals.Price</span></a>
+                                                            </div>
+                                                        </td>
+                                                        <td>&nbsp;</td>
+                                                        <td>
+                                                            <div class="text list_2_of_1" style="width: auto !important;">
+                                                                <h3 class="ttlMeal" id="@meals.Id">@meals.Name  <input type="hidden" class="prc" value="@meals.Price" /></h3>
+                                                                <p>@meals.Recipe.</p>
+                                                                <div class="read_more "><a href="/Meal/Details/@meals.Id">Read More</a></div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+@*//----------------------------------------------------------------------------*@
+
+
+
+@*<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">*@
+<style>
+    input#send {
+        cursor:pointer;
+    } .OurMenu {
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+    .MealViewBody {
+        position: relative;
+        margin-bottom: 20%;
+    }
+    .plante {
+        cursor: pointer;
+        width: 300px;
+        height: 300px;
+        background: url('/images/main/plate.png') no-repeat scroll 0% 0% / 120% 120% transparent;
+        text-align: "left";
+    }
+    #CaRtInv {
+        z-index:100;
+    }
+    #feedback {
+        font-size: 1.4em;
+    }
+
+    .ui-widget-content {
+        border: 0;
+    }
+
+    #selectable .ui-selecting {
+        background: #FECA40;
+    }
+
+    #selectable .ui-selected {
+        background: #F39814;
+        color: white;
+    }
+
+    #selectable {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        width: 60%;
+    }
+
+        #selectable li {
+            margin: 3px;
+            padding: 0.4em;
+            font-size: 1.4em;
+            height: 18px;
+        }
+
+    .myWidget:hover {
+        background-color: #ffe6b3;
+        cursor: pointer;
+    }
+
+    .myWidget .ui-selected {
+        background: #F39814;
+        color: white;
+    }
+
+    .viewMealBody {
+        position: relative;
+        padding-bottom: 20%;
+        
+    }
+
+    .listimg {
+        -moz-user-select: none;
+        -webkit-user-drag: none;
+    }
+
+    .imgga {
+        height: 100px !important;
+        width: 100px !important;
+    }
+
+    img {
+        pointer-events: none;
+    }
+
+    .unselectable {
+        /* For Opera and <= IE9, we need to add unselectable="on" attribute onto each element */
+        /* Check this site for more details: http://help.dottoro.com/lhwdpnva.php */
+        -moz-user-select: none; /* These user-select properties are inheritable, used to prevent text selection */
+        -webkit-user-select: none;
+        -ms-user-select: none; /* From IE10 only */
+        user-select: none; /* Not valid CSS yet, as of July 2012 */
+        -webkit-user-drag: none; /* Prevents dragging of images/divs etc */
+        user-drag: none;
+    }
+
+    h1 {
+        padding: .2em;
+        margin: 0;
+    }
+
+    #products {
+        float: left;
+        width: 75%;
+        height: 90%;
+        margin-right: 2em;
+    }
+
+    .ui-widget-content {
+        background: rgba(254, 254, 254, 0.11) !important;
+        border: 0 !important;
+    }
+
+    #cart; {
+        /*width: 00px;
+        //float: eft;
+        //margin-top: em;*/
+    }
+</style>
+@section scripts {
+    <script type="text/javascript">
+        $("#opnInv").click(function () { $("#CaRtInv").css({ "display": "block" }); });
+        $("#cnlInv").click(function () { $("#CaRtInv").css({ "display": "none" }); });
+        var Meal_Lst = []; // id, mlnm , prc , meal_id , cnt
+        var total_cost;
+        $("#send").click(function () {
+
+            var lstt = new Array();///new
+            var lst_itm_name = [];
+            for (var i = 0; i < Meal_Lst.length; i++) {
+                var e = $(Meal_Lst[i]).get(0);
+                lst_itm_name.push(e.id + "^" + e.nam + "^" + e.cnt);
+            }
+            lst_itm_name.push("^" + $("#additional_notes").val() + "^" ); /// TO ADD INVOICE NOTESSS not tested
+            lstt = lst_itm_name;
+            $.ajax({
+                type: "GET",
+                traditional: true,
+                url: "/InvoiceView/setListCust",
+                //url: "/MealsView/setListCust",
+                dataType: "json",
+                data: { itmsCmprLst: lstt },
+                contentType: "application/json; charset=utf-8",
+                success: send_out_succ_ClearMnu,
+                error: console.log("no")
+            });
+        });
+        var send_out_succ_ClearMnu = function (data) {
+            Meal_Lst = data; //set_cmplst_vals(TotalCompareList); 
+            //location.reload(this);
+        }
+
+        $(function () {
+            $("#catalog").accordion();
+            console.log("hello");
+            $("#catalog li h3").draggable({
+                appendTo: "body",
+                helper: "clone",
+                cursor: "move", cursorAt: { top: 4, left: 5 }, cancel: "p.ui-widget-header"
+            });
+            $("#cart ol").droppable({
+                activeClass: "ui-state-default",
+                hoverClass: "ui-state-hover",
+                accept: ":not(.ui-sortable-helper)",
+                drop: function (event, ui) {
+                    $(this).find(".placeholder").remove();
+                   
+                    //-----------Logic
+                    var mlnm =   ui.draggable.text() ;
+                    var prc = ui.draggable.find("input:hidden").val();
+                    var meal_id = $(ui.draggable).attr('id');
+                    //---------check
+
+                    var result = false;
+                    for (var i = 0; i < Meal_Lst.length; i++) {
+                       if (Meal_Lst[i][0].id === meal_id)
+                         {    result = true ; break; }
+                    }
+                    if (!result) {
+                        // not found
+                        (Meal_Lst.length === 0) ? total_cost = prc : total_cost = parseFloat(total_cost)+ parseFloat( prc);
+                        Meal_Lst.push(new Array({ 'id': meal_id, 'nam': mlnm , 'prc': prc, 'cnt': 1 }));
+                        //-----------print
+                        var tmp = $("<li style=''></li>");
+                        var tmpp = $('<div class="label label-warning"><span id="bdg_' + meal_id + '" class="badge" style="background-color:#666666;"></span></div>')
+                        $("<span class='h4'></span>").text(ui.draggable.text()).appendTo(tmpp);
+                        $('&nbsp;&nbsp;<span onclick="checkDelNewArray(2)" class="cnlBtn_X fa-times-circle fa fa-1x"></span>').appendTo(tmpp);
+                        tmpp.appendTo(tmp);
+                        tmp.appendTo(this);
+                        //---added
+                    } else if (result) {
+                        // access the foo property using result[0].foo
+                        for (var i = 0; i < Meal_Lst.length; i++) {
+                            if (Meal_Lst[i][0].id === meal_id)
+                            {
+                                Meal_Lst[i][0].cnt = Meal_Lst[i][0].cnt + 1;
+
+                                total_cost = parseFloat(total_cost) +  parseFloat(Meal_Lst[i][0].prc );
+                                
+                            }
+                            $(this).find('#bdg_' + Meal_Lst[i][0].id).html(Meal_Lst[i][0].cnt)
+                        }
+                        //---updated
+                    }
+                    //-------rePrint for count
+                    $("#TTLPRC").text(total_cost);
+                    console.log(Meal_Lst);
+                    
+
+                }
+            });
+        });
+        var checkDelNewArray = function (mId) /// check to delte
+        {
+            var res = searchInMealArray(mId);
+            if (res !== null) {
+                total_cost = parseFloat(total_cost) - parseFloat(res.prc);
+                if (res.cnt === 1) {
+                    var indxPre = searchInMealArrayIndex(mId) - 1;
+                    var indx = searchInMealArrayIndex(mId) ;
+                    if (indxPre !== -1) {
+                        Meal_Lst.slice(indxPre, indx);
+                    }
+                    else {
+                        /// only one list have
+                    }
+                    
+                }
+                else {
+                    res.cnt = res.cnt - 1;
+                }
+
+            }
+        }
+        var searchInMealArray = function (id)
+        {
+            var res = false ;
+            for (var i = 0; i < Meal_Lst.length; i++) {
+                if (Meal_Lst[i][0].id === id)
+                    return Meal_Lst[i][0];
+            }
+            return null;
+        }
+        var searchInMealArrayIndex = function (id) {
+            var res = false;
+            for (var i = 0; i < Meal_Lst.length; i++) {
+                if (Meal_Lst[i][0].id === id)
+                    return i;
+            }
+            return -1;
+        }
+        //================ FOR DECEMAL PRICE .00
+        $(document).ready(function () {
+            $(".prcMeal").text(function (i, t) {
+                return "$" + (+t.slice(1)).toFixed(2);
+            });
+            //$("#TTLPRC").text(function (i, t) {
+              //return "$" + (+t.slice(1)).toFixed(2);
+            //});
+        //================ 
+            
+        });
+        
+            
+        //================
+        var add_to_invoice = function () {
+           // $("#TTLPRC").val() = "5 $"; 
+        }
+        var check_invoice_value = function () {
+            //$("#cart ol")
+        }
+       
+    </script>
+<script>
+    $("#AttachNotes").click(function () {
+
+        $("#additional_notes").text
+
+    });
+</script>
+}

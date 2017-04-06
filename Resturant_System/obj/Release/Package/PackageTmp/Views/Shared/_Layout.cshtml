@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <link href="~/images/main/plate.png" rel="shortcut icon" />
+    
+    <link href="~/Content/bootstrap/css/bootstrap.css" rel="newest stylesheet " type="text/css" media="all" />
+    <link href="~/Content/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css" media="all" />
+
+    <link href="~/Content/bootstrap/css/bootstrap-datetimepicker.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Content/bootstrap/css/bootstrap-datetimepicker-inject.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Content/bootstrap/css/bootstrap-datetimepicker-pygments.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Content/bootstrap/css/bootstrap-datetimepicker-site.css" rel="stylesheet" type="text/css" media="all" />
+    
+
+
+
+    <link href="~/css/style2.css" rel=" newest stylesheet" type="text/css" media="all" />
+    <link href="~/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/slider.css" rel="stylesheet" type="text/css" media="all" />
+
+    <link rel="stylesheet" href="~/css/jquery-ui.css">
+
+    <script type="text/javascript" src="~/js/jquery-2.1.0.js"></script>
+    
+    <script type="text/javascript" src="js/myScript.js"></script>
+
+    <script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
+    <script type="text/javascript" src="js/camera.min.js"></script>
+
+    
+
+
+    @*<link href="Content/css/css-template/style.css" rel="stylesheet" type="text/css" media="all" />
+        <script type="text/javascript" src="js/jquery.min.js"></script>
+        <link href="Content/css/css-template/flexy-menu.css" rel="stylesheet">*@
+
+
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    
+</head>
+<body>
+    <!---Header---->
+    <div class="header" style="background-color: #BEAC7C;margin-bottom:10%;">
+        <div class="hdr-bg">     </div>
+        <div class="clear"></div>
+        <!--End-image-slider---->
+        <div class="header_bottom">
+            <div class="wrap">
+                <div class="logo">
+                    <a href="~/Home"><img src="~/images/logo.png" alt="Logo" /></a>
+                </div>
+                <div class="menu">
+                    <ul>
+                        <li class="active"><a href="~/Home">Home</a></li>
+                        <li><a href="~/MealsView">Menu</a></li>
+                        <li><a href="~/MealCategory">Services</a></li>
+                        <li><a href="~/InvoiceView">Contact Chefs</a></li>
+                        <li><a href="#">About</a></li>
+                    </ul>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+    <!---End Header---->
+    @RenderBody()
+    <!--- Picker Date---->
+    @Html.Partial("datetimePicker", "Shared")
+    <!---Footer---->
+   <footer class="footer " id="ftr">
+        <div class="copy-right" style="margin-top: 10%;">
+            <div class="wrap">
+                <p class="company_name">Company Name &copy; 2014 All Rights Reseverd</p> <p class="design">Design by <a href="#">M.K.</a></p>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </footer>
+    
+    @Scripts.Render("~/bundles/jquery", "~/bundles/jqueryui"  , "~/bundles/bootstrap") 
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

@@ -1,0 +1,69 @@
+﻿@model Resturant_System.Models.Meal_Content
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Meal_Content</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Quantity)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Quantity)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Unit)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Unit)
+    </div>
+
+    <div class="display-label">
+        <div id="Meal_Id">
+            @foreach (var items in ViewBag.Meal_Ids as List<Resturant_System.Models.Select_Item>)
+            {
+                if (items.id == @Model.Meal_Id)
+                {
+                    <div id="@items.id">@items.value</div>
+                }
+            }
+        </div>
+
+         @*@Html.DisplayNameFor(model => model.Meal_Id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Meal_Id)*@
+    </div>
+
+    <div class="display-label">
+        <div id="Goods_Id">
+            @foreach (var items in ViewBag.Goods_Ids as List<Resturant_System.Models.Select_Item>)
+            {
+                if (items.id == @Model.Goods_Id)
+                {
+                    <div id="@items.id">@items.value</div>
+                }
+            }
+        </div>
+         @*@Html.DisplayNameFor(model => model.Goods_Id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Goods_Id)*@
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Extra)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Extra)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,36 @@
+﻿@model Resturant_System.Models.Comp_Item
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Comp_Item</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CompId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CompId)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Extra)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Extra)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

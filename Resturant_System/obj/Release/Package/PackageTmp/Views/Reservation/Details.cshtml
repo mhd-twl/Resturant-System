@@ -1,0 +1,51 @@
+﻿@model Resturant_System.Models.Reserved_Table
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Reserved_Table</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Table_Id)
+    </div>
+    <div class="display-field">
+        <div id="Table_Id">
+            @foreach (var items in ViewBag.Tables as List<Resturant_System.Models.Select_Item>)
+            {
+                if (items.id == @Model.Table_Id)
+                {
+                    <div id="@items.id">@items.value</div>
+                }
+            }
+        </div>
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Table_Status)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Table_Status)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Start_Date)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Start_Date)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Extra)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Extra)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
